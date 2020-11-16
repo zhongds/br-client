@@ -1,0 +1,175 @@
+@import "../../variable";
+
+.bucket-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .buttons-wrapper {
+    border-bottom: 1px solid $color-border;
+    padding: 8px 12px;
+  }
+
+  .toolbar-wrapper {
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border-bottom: 1px solid $color-border;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+
+    .toolbar-icon {
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+
+      .toolbar-right__search {
+        margin: 0 5px;
+      }
+    }
+  }
+
+  .loading-wrapper {
+    height: 100%;
+    overflow: hidden;
+    .ant-spin-container {
+      height: 100%;
+      position: relative;
+      .file-drop {
+        height: 100%;
+        .file-drop-target {
+          height: 100%;
+
+          &.file-drop-dragging-over-frame {
+            &::after {
+              z-index: 100;
+              content: "";
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              background-color: rgba(0, 0, 0, 0.5);
+              backdrop-filter: blur(5px);
+            }
+          }
+
+          &.file-drop-dragging-over-target {
+            &::before {
+              z-index: 101;
+              content: "文件将储存到当前目录下";
+              position: absolute;
+              top: 10px;
+              left: 10px;
+              bottom: 10px;
+              right: 10px;
+              border: 2px #00b3ff dashed;
+              border-radius: 10px;
+              color: #fff;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+
+          .content-wrapper {
+            z-index: 100;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            .main-table {
+              height: 100%;
+            }
+
+            .main-grid {
+              min-height: 100%;
+              overflow: hidden;
+              .main-grid__cell {
+                float: left;
+                height: 80px;
+                width: 80px;
+                margin: 5px;
+                overflow: hidden;
+
+                &:hover {
+                  .main-grid__cell-inner {
+                    background: rgba(0, 0, 0, 0.3);
+                  }
+                }
+                .main-grid__cell-inner {
+                  padding: 5px;
+                  border-radius: 3px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  .preview-image {
+                    overflow: hidden;
+                    img {
+                      width: 50px;
+                      height: 50px;
+                      object-fit: cover;
+                    }
+                  }
+
+                  .name {
+                    display: inline-block;
+                    font-size: 12px;
+                    line-height: 17px;
+                    width: 100%;
+                    color: #fff;
+                    text-align: center;
+                    padding-top: 3px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    height: 40px;
+    padding: 0 10px;
+    border-top: 1px solid $color-border;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+
+    .footer-left {
+      .current-select {
+        color: rgba(255, 255, 255, 1);
+      }
+
+      .current-total {
+        color: rgba(255, 255, 255, 0.75);
+      }
+    }
+  }
+}
+
+.selection {
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.8);
+}
+
+.selected {
+  transition: background-color 0.2s ease;
+  background: rgba(0, 0, 0, 0.2);
+}
